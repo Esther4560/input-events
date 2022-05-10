@@ -51,7 +51,7 @@
          Write a function for changing the title of the document in something else.
         */
   
-        const changeTitle = function () {
+        const changeTitle = function (newTitle) {
           document.title="coding is Amazing!"
           
         };
@@ -68,8 +68,12 @@
          Write a function for changing the text of only the p which are children of a div.
         */
   
-        const changePcontent = function () {
-       
+        function changeContent(){
+          let psInDiv=document.querySelectorAll("div p")
+         for(let i=0;i < psInDiv.length;i++){
+           psInDiv[i].innertext="child of div"
+         }
+
         };
   
         /* EXERCISE 4
