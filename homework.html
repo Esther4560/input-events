@@ -51,24 +51,29 @@
          Write a function for changing the title of the document in something else.
         */
   
-        const changeTitle = function () {
-          document.getElementsByTagName("h1").innertext="Coding is Amazing";
-          
+        const changeTitle = function (newTitle) {
+                const title = document.querySelector("h1");
+                title.innerText = newTitle;
         };
   
         /* EXERCISE 2
          Write a function for changing the class of the title of the page in "myHeading".
         */
-  
-        const addClassToTitle = function () {
-          document.getElementsByClassName("myHeading").className = "lovely";
-        };
-  
+
+            const addClassToTitle = function () {
+              //
+                const title = document.querySelector("h1");
+                title.classList.remove("myClass")
+                title.classList.add("myHeading");
+            };
+            addClassToTitle();
+
         /* EXERCISE 3
          Write a function for changing the text of only the p which are children of a div.
         */
   
         function changeContent(){
+          //
           let psInDiv=document.querySelectorAll("div p")
          for(let i=0;i < psInDiv.length;i++){
            psInDiv[i].innertext="child of div"
@@ -81,32 +86,53 @@
         */
   
         const changeUrls = function () {
-        
+        //
           let urlChangeNode=document.queryselectorAll()
+          const changeUrls = function () {
+                const links = document.querySelectorAll("a");
+                for (let i = 0; i < links.length; i++) {
+                    const a = links[i];
+                    a.href = "https://www.google.com"
+                }
+            };
         };
   
         /* EXERCISE 5
          Write a function for adding a new list item in the second unordered list.
         */
-  
-        const addToTheSecond = function (content) {
-          //
-        };
-  
-        /* EXERCISE 6
+       const addToTheSecond = function (content) {
+        //
+                const ul = document.querySelectorAll("ul")[1];
+                ul.innerHTML += `<li>${content}</li>`;
+               
+            };
+            addToTheSecond("new item");
+        
+            /* EXERCISE 6
          Write a function for adding a second paragraph to the first div.
         */
   
         const addParagraph = function (content) {
           //
-        };
-  
+          const div = document.querySelectorAll("div")[0];
+          let p = document.createElement("p")
+          p.innerText = content
+          div.appendChild(p) 
+                
+       };
+            addParagraph("new paragraph")
         /* EXERCISE 7
          Write a function for making the first unordered list disappear.
         */
   
         const firstUlDisappear = function () {
           //
+          const firstUlDisappear = function () {
+                const ul = document.querySelectorAll("ul")[0];
+
+                ul.remove();
+            };
+           
         };
   
         /* EXERCISE 8
@@ -115,7 +141,16 @@
   
         const paintItGreen = function () {
           //
+        
+        
+        let uls = document.querySelectorAll("ul")
+        for(let i = 0; i < uls.length; i++) {
+        let ul = uls[i]
+        ul.style.background = "green"
+           }
         };
+          paintItGreen();
+
   
         /* EXERCISE 9
          Make the heading of the page change color every time the user clicks on it.
@@ -123,6 +158,15 @@
   
         const makeItClickable = function () {
           //
+          const makeItClickable = function () {
+                const title = document.querySelector("h1");
+                title.addEventListener("click", function (e) {
+                    e.target.classList.toggle("myHeading");
+                   
+                });
+            };
+            makeItClickable();
+
         };
   
         /* EXERCISE 10
@@ -131,6 +175,15 @@
   
         const changeFooterText = function () {
           //
+          
+          const changeFooterText = function () {
+                const footer = document.querySelector(".footer");
+                footer.addEventListener("click", function (e) {
+                    e.target.innerText = "something else";
+                });
+            };
+            changeFooterText(); 
+
         };
   
         /* EXERCISE 11
@@ -138,10 +191,12 @@
         */
   
         const inputField = document.getElementById("input-field");
-        // ...
-  
-        /* EXERCISE 12
-         Create a welcome alert message when the page successfully loads.
+        //
+          inputField.addEventListener("keydown", function (e) {
+                console.log(e.target.value);
+            })
+
+        /* Create a welcome alert message when the page successfully loads.
         */
   
         window.onload = function () {
@@ -154,4 +209,5 @@
       </script>
     
   
-  </body></html>
+  </body>
+  </html>
